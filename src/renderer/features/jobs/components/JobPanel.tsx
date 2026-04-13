@@ -7,8 +7,9 @@ import { BatchProgressBar } from './BatchProgressBar';
 
 export function JobPanel() {
   const templateId = useTemplateStore(s => s.selectedId);
-  const jobs = useJobStore(s => templateId ? s.jobsByTemplateId[templateId] ?? [] : []);
+  const jobsByTemplateId = useJobStore(s => s.jobsByTemplateId);
   const loadByTemplate = useJobStore(s => s.loadByTemplate);
+  const jobs = templateId ? jobsByTemplateId[templateId] ?? [] : [];
 
   useEffect(() => { if (templateId) void loadByTemplate(templateId); }, [templateId, loadByTemplate]);
   if (!templateId) return <section><h4>Jobs</h4><p style={{ opacity: 0.6 }}>Select a template.</p></section>;
