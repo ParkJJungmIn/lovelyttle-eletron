@@ -1,0 +1,13 @@
+:root { color-scheme: light dark; }
+body { margin: 0; font-family: -apple-system, system-ui, sans-serif; }
+.app { height: 100vh; display: flex; flex-direction: column; }
+.main-grid { flex: 1; display: grid; grid-template-columns: 240px 320px 1fr; overflow: hidden; }
+.main-grid > * { overflow: auto; border-right: 1px solid #ccc3; padding: 12px; }
+button { cursor: pointer; }
+input, textarea { font: inherit; }
+.badge { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 11px; }
+.badge-idle { background: #ddd; }
+.badge-pending { background: #ffd; }
+.badge-running { background: #cdf; }
+.badge-succeeded { background: #cfc; }
+.badge-failed { background: #fcc; }
