@@ -13,8 +13,8 @@
     "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.node.json --noEmit",
     "test": "npm rebuild better-sqlite3 --silent && vitest run",
     "test:watch": "npm rebuild better-sqlite3 --silent && vitest",
-    "package:win": "electron-rebuild -w better-sqlite3 && electron-vite build && electron-builder --win --x64",
-    "package:mac": "electron-rebuild -w better-sqlite3 && electron-vite build && electron-builder --mac"
+    "package:win": "electron-rebuild -f -w better-sqlite3 && electron-vite build && electron-builder --win --x64",
+    "package:mac": "electron-rebuild -f -w better-sqlite3 && electron-vite build && electron-builder --mac"
   },
   "build": {
     "appId": "dev.jeongmin.nanobanana-factory",
@@ -25,6 +25,8 @@
       { "from": "src/main/db/migrations", "to": "migrations" }
     ],
     "asarUnpack": ["**/node_modules/better-sqlite3/**"],
+    "npmRebuild": false,
+    "buildDependenciesFromSource": false,
     "win": {
       "target": [{ "target": "nsis", "arch": ["x64"] }],
       "artifactName": "${productName}-${version}-Setup.${ext}"
