@@ -12,7 +12,33 @@
     "package": "electron-rebuild -w better-sqlite3 --silent && electron-vite build && electron-builder",
     "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.node.json --noEmit",
     "test": "npm rebuild better-sqlite3 --silent && vitest run",
-    "test:watch": "npm rebuild better-sqlite3 --silent && vitest"
+    "test:watch": "npm rebuild better-sqlite3 --silent && vitest",
+    "package:win": "electron-vite build && electron-builder --win --x64",
+    "package:mac": "electron-vite build && electron-builder --mac"
+  },
+  "build": {
+    "appId": "dev.jeongmin.nanobanana-factory",
+    "productName": "NanoBanana Factory",
+    "directories": { "output": "release" },
+    "files": ["out/**/*", "package.json"],
+    "extraResources": [
+      { "from": "src/main/db/migrations", "to": "migrations" }
+    ],
+    "asarUnpack": ["**/node_modules/better-sqlite3/**"],
+    "win": {
+      "target": [{ "target": "nsis", "arch": ["x64"] }],
+      "artifactName": "${productName}-${version}-Setup.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true
+    },
+    "mac": {
+      "target": [{ "target": "dmg", "arch": ["arm64", "x64"] }],
+      "category": "public.app-category.graphics-design"
+    }
   },
   "dependencies": {
     "@google/generative-ai": "^0.21.0",
