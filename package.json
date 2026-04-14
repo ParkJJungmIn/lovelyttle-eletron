@@ -13,8 +13,8 @@
     "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.node.json --noEmit",
     "test": "npm rebuild better-sqlite3 --silent && vitest run",
     "test:watch": "npm rebuild better-sqlite3 --silent && vitest",
-    "package:win": "electron-vite build && electron-builder --win --x64",
-    "package:mac": "electron-vite build && electron-builder --mac"
+    "package:win": "electron-rebuild -w better-sqlite3 && electron-vite build && electron-builder --win --x64",
+    "package:mac": "electron-rebuild -w better-sqlite3 && electron-vite build && electron-builder --mac"
   },
   "build": {
     "appId": "dev.jeongmin.nanobanana-factory",
