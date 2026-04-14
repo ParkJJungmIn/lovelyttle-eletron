@@ -9,7 +9,7 @@ export function GenerationViewerDialog(props: { assetId: string | null; onClose:
   }, [props.assetId]);
   if (!props.assetId) return null;
   return (
-    <div style={{ position: 'fixed', inset: 0, background: '#000b', display: 'grid', placeItems: 'center', zIndex: 10 }}
+    <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.85)', display: 'grid', placeItems: 'center', zIndex: 10 }}
          onClick={props.onClose}>
       {src && <img src={src} style={{ maxWidth: '90vw', maxHeight: '90vh' }} />}
     </div>

@@ -13,8 +13,8 @@ export function SharedPromptEditor({ template }: { template: Template }) {
       onChange={e => setValue(e.target.value)}
       onBlur={() => { if (value !== template.sharedPrompt) void update(template.id, { sharedPrompt: value }); }}
       rows={5}
-      style={{ width: '100%' }}
-      placeholder="Shared prompt for every job under this template. Use {variableName} to reference images."
+      style={{ width: '100%', boxSizing: 'border-box' }}
+      placeholder="이 템플릿에 속한 모든 잡에 공통으로 적용되는 프롬프트. {변수명} 형식으로 이미지를 참조할 수 있습니다."
     />
   );
 }

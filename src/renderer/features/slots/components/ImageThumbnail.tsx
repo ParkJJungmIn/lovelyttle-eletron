@@ -8,6 +8,6 @@ export function ImageThumbnail({ assetId, size = 64 }: { assetId: string; size?:
     void ipc.asset.getDataUrl(assetId).then(r => { if (!cancelled) setSrc(r.dataUrl); });
     return () => { cancelled = true; };
   }, [assetId]);
-  if (!src) return <div style={{ width: size, height: size, background: '#eee' }} />;
+  if (!src) return <div style={{ width: size, height: size, background: 'var(--bg-subtle)', borderRadius: 4 }} />;
   return <img src={src} width={size} height={size} style={{ objectFit: 'cover', borderRadius: 4 }} />;
 }

@@ -27,7 +27,7 @@ export function AddImageSlotButton(props: {
 
   return (
     <>
-      <button onClick={() => ref.current?.click()}>+ Add image</button>
+      <button onClick={() => ref.current?.click()}>+ 이미지 추가</button>
       <input
         ref={ref}
         type="file"

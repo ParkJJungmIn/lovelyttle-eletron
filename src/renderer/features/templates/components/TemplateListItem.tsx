@@ -9,14 +9,15 @@ export function TemplateListItem({ template, active }: { template: Template; act
       onClick={() => select(template.id)}
       style={{
         padding: '4px 6px', borderRadius: 4, cursor: 'pointer',
-        background: active ? '#cdf' : 'transparent',
+        background: active ? 'var(--selected-bg)' : 'transparent',
+        color: 'var(--text)',
         display: 'flex', alignItems: 'center', gap: 4,
       }}
     >
-      <span style={{ flex: 1 }}>{template.name}</span>
+      <span style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{template.name}</span>
       <button
-        onClick={e => { e.stopPropagation(); if (confirm(`Delete template "${template.name}"?`)) void remove(template.id); }}
-        style={{ fontSize: 11 }}
+        onClick={e => { e.stopPropagation(); if (confirm(`템플릿 "${template.name}"을(를) 삭제할까요?`)) void remove(template.id); }}
+        style={{ fontSize: 11, padding: '2px 6px' }}
       >
         🗑
       </button>

@@ -12,14 +12,14 @@ export function JobPanel() {
   const jobs = templateId ? jobsByTemplateId[templateId] ?? [] : [];
 
   useEffect(() => { if (templateId) void loadByTemplate(templateId); }, [templateId, loadByTemplate]);
-  if (!templateId) return <section><h4>Jobs</h4><p style={{ opacity: 0.6 }}>Select a template.</p></section>;
+  if (!templateId) return <section><h4 style={{ marginTop: 0 }}>잡</h4><p style={{ color: 'var(--text-muted)' }}>템플릿을 선택하세요.</p></section>;
 
   return (
     <section>
-      <h4>Jobs</h4>
+      <h4 style={{ marginTop: 0 }}>잡</h4>
       <JobToolbar templateId={templateId} />
       <BatchProgressBar />
-      <ul style={{ listStyle: 'none', padding: 0 }}>
+      <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
         {jobs.map(j => <JobListItem key={j.id} job={j} />)}
       </ul>
     </section>

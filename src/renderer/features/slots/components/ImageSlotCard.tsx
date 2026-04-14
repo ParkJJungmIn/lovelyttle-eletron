@@ -17,23 +17,23 @@ export function ImageSlotCard(props: {
   };
 
   return (
-    <div style={{ display: 'flex', gap: 8, alignItems: 'center', border: '1px solid #ccc5', padding: 6, borderRadius: 6, marginBottom: 6 }}>
+    <div style={{ display: 'flex', gap: 8, alignItems: 'center', border: '1px solid var(--border-soft)', padding: 6, borderRadius: 6, marginBottom: 6, background: 'var(--bg-subtle)' }}>
       <ImageThumbnail assetId={slot.assetId} />
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 4 }}>
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 4, minWidth: 0 }}>
         <input
           value={variableName}
           onChange={e => setVariableName(e.target.value.replace(/[^\w]/g, ''))}
           onBlur={() => variableName !== slot.variableName && void commit({ variableName })}
-          placeholder="variableName"
+          placeholder="변수명"
         />
         <input
           value={description}
           onChange={e => setDescription(e.target.value)}
           onBlur={() => description !== slot.description && void commit({ description })}
-          placeholder="description (optional)"
+          placeholder="설명 (선택)"
         />
       </div>
-      <button onClick={async () => { await ipc.slot.delete(slot.id); onChange(); }}>🗑</button>
+      <button onClick={async () => { if (confirm('이 이미지를 삭제할까요?')) { await ipc.slot.delete(slot.id); onChange(); } }}>🗑</button>
     </div>
   );
 }

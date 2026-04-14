@@ -13,8 +13,8 @@ export function JobPromptEditor({ job }: { job: Job }) {
       onChange={e => setValue(e.target.value)}
       onBlur={() => value !== job.prompt && void update(job.id, { prompt: value })}
       rows={6}
-      style={{ width: '100%' }}
-      placeholder="Job-specific prompt. Use {variableName} to reference images."
+      style={{ width: '100%', boxSizing: 'border-box' }}
+      placeholder="이 잡 전용 프롬프트. {변수명} 형식으로 이미지를 참조할 수 있습니다."
     />
   );
 }

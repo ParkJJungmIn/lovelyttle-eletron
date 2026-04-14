@@ -13,12 +13,12 @@ export function TemplatePanel() {
   };
   return (
     <section>
-      <h4>Templates</h4>
-      <ul style={{ listStyle: 'none', padding: 0 }}>
+      <h4 style={{ marginTop: 0 }}>템플릿</h4>
+      <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
         {templates.map(t => <TemplateListItem key={t.id} template={t} active={t.id === selectedId} />)}
       </ul>
       <div style={{ marginTop: 8, display: 'flex', gap: 4 }}>
-        <input value={name} onChange={e => setName(e.target.value)} placeholder="New template name" />
+        <input value={name} onChange={e => setName(e.target.value)} placeholder="새 템플릿 이름" style={{ flex: 1, minWidth: 0 }} />
         <button onClick={onNew}>+</button>
       </div>
       <hr />

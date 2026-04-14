@@ -44,10 +44,10 @@ export function composePrompt(input: ComposeInput): ComposeResult {
 
   const warnings: string[] = [];
   for (const name of referenced) {
-    if (!defined.has(name)) warnings.push(`Variable {${name}} is referenced but not defined.`);
+    if (!defined.has(name)) warnings.push(`변수 {${name}}를 프롬프트에서 참조했지만 정의되지 않았습니다.`);
   }
   for (const name of defined) {
-    if (!referenced.has(name)) warnings.push(`Image {${name}} is defined but not referenced in the prompt.`);
+    if (!referenced.has(name)) warnings.push(`이미지 {${name}}가 정의되어 있지만 프롬프트에서 참조되지 않았습니다.`);
   }
 
   return {
